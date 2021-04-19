@@ -10,6 +10,11 @@ class DataOperations:
     def __init__(self, data):
         self.data = data
 
+    ####################################################
+    #    function name: calc_abs_freq                  #
+    #    function parameters: None                     #
+    #    function description: calculate data frequency#
+    ####################################################
     def calc_abs_freq(self):
         try:
             dataset = set(self.data)
@@ -18,6 +23,11 @@ class DataOperations:
             print("An exception accurred while calculating absolute frequency.")
         return abs_freq
 
+    ####################################################
+    #    function name: sort_abs_freq_dict             #
+    #    function parameters: dict abs_dict            #
+    #    function description: sort dictionary         #
+    ####################################################
     def sort_abs_freq_dict(self, abs_dict):
         try:
             abs_sorted_tuples = sorted(abs_dict.items(), key=operator.itemgetter(1))
@@ -26,6 +36,12 @@ class DataOperations:
             print("An exception accurred while sorting absolute frequency dictionary.")
         return sorted_tuples
 
+    ####################################################
+    #    function name: abs_freq                       #
+    #    function parameters: None                     #
+    #    function description: calculate and sort      #
+    #        data absolute frequency                   #
+    ####################################################
     def abs_freq(self):
         abs_freq_dict = None
         try:
@@ -35,6 +51,12 @@ class DataOperations:
             print("An excception accurred in abs_freq()")
         return abs_freq_dict
 
+    ####################################################
+    #    function name: get_max_value                  #
+    #    function parameters: dict abs_freq_dict       #
+    #    function description: summarize all dict      #
+    #                           values                 #
+    ####################################################
     def get_max_value(self, abs_freq_dict):  
         max_value = 0
         try:
@@ -44,6 +66,12 @@ class DataOperations:
             print("An exception occurred while getting max value.")
         return max_value
 
+    ####################################################
+    #    function name: calc_rel_freq                  #
+    #    function parameters: int value, int max_value #
+    #    function description: calculate relative      #
+    #                          frequency               #
+    ####################################################
     def calc_rel_freq(self, value, max_value):
         rel_freq = 0
         try:
@@ -52,8 +80,13 @@ class DataOperations:
             print("An exception occurred while calculating relative frequency.")
         return rel_freq
 
+    ####################################################
+    #    function name: find_mode                      #
+    #    function parameters: dict abs_freq_dict       #
+    #    function description: get all keys with max   #
+    #                          equal values            #
+    ####################################################
     def find_mode(self, abs_freq_dict):
-        #get all keys with max equal values
         mode = []
         try:
             mode = [key for key in abs_freq_dict.keys() if abs_freq_dict[key] == max(abs_freq_dict.values())]
@@ -61,6 +94,12 @@ class DataOperations:
             print("An exception occurred while finding mode.")
         return mode
 
+    ####################################################
+    #    function name: calc_scope                     #
+    #    function parameters: list min, list max       #
+    #    function description: sub min from max        #
+    #                         absolute frequencies     #
+    ####################################################
     def calc_scope(self, min, max):
         scope = 0
         try: 

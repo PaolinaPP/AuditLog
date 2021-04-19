@@ -6,6 +6,13 @@ import scripts.data_operations as do
 
 class AuditLog:
 
+    ####################################################
+    #    function name: read_file                      #
+    #    function parameters: string path,             #
+    #                         string str_to_search_for #
+    #    function description: read file and return    #
+    #            list of read data                     #
+    ####################################################
     def read_file(self, path, str_to_search_for):
         lectures = {}
         try:
@@ -16,26 +23,53 @@ class AuditLog:
             print("An exception occurred in read_file().")
         return lectures
 
+    ####################################################
+    #    function name: get_abs_freq                   #
+    #    function parameters: list data                #
+    #    function description: get absolute frequency  #
+    ####################################################
     def get_abs_freq(self, data):
         (max_value, abs_freq_dict) = data.absolute_frequency()
         for key, value in abs_freq_dict.items():
             print(f'{key}: {value}')
         print(f'Общо: {max_value}')
 
+    ####################################################
+    #    function name: get_rel_freq                   #
+    #    function parameters: list data                #
+    #    function description: get relative frequency  #
+    ####################################################
     def get_rel_freq(self, data):
         (max_value, rel_freq_dict) = data.relative_frequency()
         for key, value in rel_freq_dict.items():
             print(f'{key}: {value}%')
         print(f'Общо: {max_value}%')
 
+    ####################################################
+    #    function name: get_mode                       #
+    #    function parameters: list data                #
+    #    function description: get mode                #
+    ####################################################
     def get_mode(self, data):
         mode = data.mode()
         print(f'M0 = {mode}')
 
+    ####################################################
+    #    function name: get_scope                      #
+    #    function parameters: list data                #
+    #    function description: get scope               #
+    ####################################################
     def get_scope(self, data):
         scope = data.scope()
         print(f'{scope}')      
 
+    ####################################################
+    #    function name: main                           #
+    #    function parameters: string path,             #
+    #                         string str_to_search_for #
+    #    function description: main function which     #
+    #        calls all funcs                           #
+    ####################################################
     def main(self, path, str_to_search_for):
         try:
             lectures = self.read_file(path, str_to_search_for)
