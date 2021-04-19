@@ -3,6 +3,8 @@
 from collections import Counter
 import operator
 
+PERSENTAGE = 100
+
 class DataOperations:
 
     def __init__(self, data):
@@ -45,7 +47,7 @@ class DataOperations:
     def calc_rel_freq(self, value, max_value):
         rel_freq = 0
         try:
-            rel_freq = (value/max_value)*100
+            rel_freq = (value/max_value)*PERSENTAGE
         except:
             print("An exception occurred while calculating relative frequency.")
         return rel_freq
@@ -88,7 +90,7 @@ class DataOperations:
                 rel_freq_dict[key] = self.calc_rel_freq(value, max_value)
         except:
             print("An exception occurred in relative_frequency().")
-        return rel_freq_dict
+        return (PERSENTAGE, rel_freq_dict)
 
     def mode(self):
         print("Мода:")

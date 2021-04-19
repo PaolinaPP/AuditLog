@@ -23,10 +23,10 @@ class AuditLog:
         print(f'Общо: {max_value}')
 
     def get_rel_freq(self, data):
-        rel_freq_dict = data.relative_frequency()
+        (max_value, rel_freq_dict) = data.relative_frequency()
         for key, value in rel_freq_dict.items():
             print(f'{key}: {value}%')
-        print(f'Общо: 100%')
+        print(f'Общо: {max_value}%')
 
     def get_mode(self, data):
         mode = data.mode()
