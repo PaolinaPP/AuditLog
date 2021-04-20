@@ -108,6 +108,12 @@ class DataOperations:
             print("An exception occurred while calculating scope.")
         return scope
 
+    ####################################################
+    #    function name: absolute_frequency             #
+    #    function parameters: None                     #
+    #    function description: get absolute frequency  #
+    #                         and max value            #
+    ####################################################
     def absolute_frequency(self):
         print("Абсолютни честоти:")
         max_val = 0
@@ -119,6 +125,12 @@ class DataOperations:
             print("An exception occurred in absolute_frequency().")
         return (max_val, abs_freq_dict)
 
+    ####################################################
+    #    function name: relative_frequency             #
+    #    function parameters: None                     #
+    #    function description: get relative frequency  #
+    #                      and max value which is 100  #
+    ####################################################
     def relative_frequency(self):
         print("Релативни честоти:")
         rel_freq_dict = dict()
@@ -131,6 +143,12 @@ class DataOperations:
             print("An exception occurred in relative_frequency().")
         return (PERSENTAGE, rel_freq_dict)
 
+    ####################################################
+    #    function name: mode                           #
+    #    function parameters: None                     #
+    #    function description: calculate absolute      #
+    #              frequency and mode value            #
+    ####################################################
     def mode(self):
         print("Мода:")
         mode_value = 0
@@ -141,6 +159,12 @@ class DataOperations:
             print("An exception occurred in mode().")
         return mode_value
 
+    ####################################################
+    #    function name: scope                          #
+    #    function parameters: None                     #
+    #    function description: calculate absolute      #
+    #              frequency and scope value           #
+    ####################################################
     def scope(self):
         print("Размах:")
         scope_value = 0

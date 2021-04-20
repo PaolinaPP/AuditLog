@@ -8,6 +8,11 @@ class FileOperations:
     def __init__(self, file_path):
         self.file_path = file_path
 
+    ####################################################
+    #    function name: load_file                      #
+    #    function parameters: None                     #
+    #    function description: loading file as sheet   #
+    ####################################################
     def load_file(self):
         sheet = None
         try:
@@ -17,6 +22,13 @@ class FileOperations:
             print("An exception occurred while loading file.")
         return sheet
 
+    ####################################################
+    #    function name: read_file                      #
+    #    function parameters: string str_to_search_for #
+    #                         sheet (document copy)    #
+    #    function description: select only rows which  #
+    #        contains a specific string                #
+    ####################################################
     def read_data(self, str_to_search_for, sheet):
         lectures = []
         try:
