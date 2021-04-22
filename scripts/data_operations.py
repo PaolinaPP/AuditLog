@@ -46,7 +46,11 @@ class DataOperations:
         abs_freq_dict = None
         try:
             abs_data = self.calc_abs_freq()
+            if abs_data is None:
+                raise Exception("abs_data is empty.")
             abs_freq_dict = self.sort_abs_freq_dict(abs_data)
+            if abs_freq_dict is None:
+                raise Exception("abs_freq_dict is empty.")
         except:
             print("An excception accurred in abs_freq()")
         return abs_freq_dict
@@ -115,12 +119,15 @@ class DataOperations:
     #                         and max value            #
     ####################################################
     def absolute_frequency(self):
-        print("Абсолютни честоти:")
         max_val = 0
         abs_freq_dict = dict()
         try:
             abs_freq_dict = self.abs_freq()
+            if abs_freq_dict is None:
+                raise Exception("abs_freq_dict is empty.")
             max_val = self.get_max_value(abs_freq_dict)
+            if max_val is None or max_val < 0:
+                raise Exception("max_val is not correct.")
         except:
             print("An exception occurred in absolute_frequency().")
         return (max_val, abs_freq_dict)
@@ -132,13 +139,18 @@ class DataOperations:
     #                      and max value which is 100  #
     ####################################################
     def relative_frequency(self):
-        print("Релативни честоти:")
         rel_freq_dict = dict()
         try:
             abs_freq_dict = self.abs_freq()
+            if abs_freq_dict is None:
+                raise Exception("abs_freq_dict is empty.")
             max_value = self.get_max_value(abs_freq_dict)
+            if max_value is None or max_value < 0:
+               raise Exception("max_val is not correct.")
             for key, value in abs_freq_dict.items():
                 rel_freq_dict[key] = self.calc_rel_freq(value, max_value)
+            if rel_freq_dict is None:
+                raise Exception("rel_freq_dict is empty.")    
         except:
             print("An exception occurred in relative_frequency().")
         return (PERSENTAGE, rel_freq_dict)
@@ -150,11 +162,14 @@ class DataOperations:
     #              frequency and mode value            #
     ####################################################
     def mode(self):
-        print("Мода:")
         mode_value = 0
         try:
             abs_freq_dict = self.abs_freq()
+            if abs_freq_dict is None:
+                raise Exception("abs_freq_dict is empty.")
             mode_value = self.find_mode(abs_freq_dict)
+            if mode_value is None:
+                raise Exception("mode value is not correct.")
         except:
             print("An exception occurred in mode().")
         return mode_value
@@ -166,11 +181,14 @@ class DataOperations:
     #              frequency and scope value           #
     ####################################################
     def scope(self):
-        print("Размах:")
         scope_value = 0
         try:
             abs_freq_dict = self.abs_freq()
+            if abs_freq_dict is None:
+                raise Exception("abs_freq_dict is empty.")
             scope_value = self.calc_scope(list(abs_freq_dict.items())[0], list(abs_freq_dict.items())[-1])
+            if scope_value is None or scope_value < 0:
+                raise Exception("scope value is not correct.")
         except:
             print("An exception occurred in scope().")
         return scope_value
