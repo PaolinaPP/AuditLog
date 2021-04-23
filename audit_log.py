@@ -23,7 +23,7 @@ class AuditLog:
             lectures = file_operations.read_data(str_to_search_for, sheet)
             if lectures is None:
                 raise Exception("lectures is empty.")
-        except:
+        except Exception:
             print("An exception occurred in read_file().")
         return lectures
 
@@ -44,7 +44,7 @@ class AuditLog:
             for key, value in abs_freq_dict.items():
                 print(f'{key}: {value}')
             print(f'Max: {max_value}')
-        except:
+        except Exception:
             print("An exception occurred in get_abs_freq().")    
         return max_value
 
@@ -65,7 +65,7 @@ class AuditLog:
             for key, value in rel_freq_dict.items():
                 print(f'{key}: {value}%')
             print(f'Max: {max_value}%')
-        except:
+        except Exception:
             print("An exception occurred in get_rel_freq().")    
         return max_value
 
@@ -82,7 +82,7 @@ class AuditLog:
             if mode is None:
                 raise Exception("mode value is not correct.")
             print(f'M0 = {mode}')
-        except:
+        except Exception:
             print("An exception occurred in get_mode().")    
         return mode
 
@@ -99,7 +99,7 @@ class AuditLog:
             if scope is None or scope < 0:
                 raise Exception("scope value is not correct.")
             print(f'{scope}')
-        except:
+        except Exception:
             print("An exception occurred in get_mode().")    
         return scope          
 
@@ -122,7 +122,7 @@ class AuditLog:
                 raise Exception("get_mode(data) returns None value.")
             if self.get_scope(data) is None:
                 raise Exception("get_scope(data) returns None value.")
-        except:
+        except Exception:
             print("An exception occurred in main().")
 
 if __name__ == "__main__":

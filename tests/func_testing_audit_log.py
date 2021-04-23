@@ -12,11 +12,13 @@ DATA_2 = ['Hello', 'Hello', 'Hello', 'Hola', 'Hello', 'Hello', 'Ciao', 'Hi', 'Ho
 
 class TestAuditLog():
 
-    @pytest.mark.parametrize("path", [(Path(__file__).with_name('info_table.xlsx'))])
+    @pytest.mark.parametrize("path", [(Path(__file__).with_name('info_table.xlsx')), ("asdadsd.xlsx")])
     def test_read_file(self, path):
         expected = ['File: Лекция 8: Език за заявки SPARQL', 'File: Лекция 1: Въведение в програмиране за семантичен уеб', 'File: Лекция 7: Проектиране на онтология с Protégé', 'File: Лекция 9: Програмиране за семантичен уеб', 'File: Лекция 1: Въведение в програмиране за семантичен уеб']
-        actual = al.AuditLog().read_file(path, "File: Лекция")
-        assert (len(expected) == len(actual)) and (sorted(expected) == sorted(actual))
+        with pytest.raises(Exception) as context:
+            actual = al.AuditLog().read_file(path, "File: Лекция")
+            assert (len(expected) == len(actual)) and (sorted(expected) == sorted(actual))
+            assert 'read_file()' in str(context.exception)
 
     @pytest.mark.parametrize("data, expected", [(do.DataOperations(DATA), 20), (do.DataOperations(DATA_2), 21)])
     def test_get_abs_freq(self, data, expected):
