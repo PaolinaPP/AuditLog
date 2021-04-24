@@ -43,7 +43,4 @@ class TestAuditLog():
     @pytest.mark.parametrize("data, expected", [(do.DataOperations(DATA), 10), (do.DataOperations(DATA_2), 9)])
     def test_get_scope(self, data, expected):
         actual = al.AuditLog().get_scope(data)
-        assert actual == expected 
-
-if __name__ == '__main__':
-    unittest.main()      
+        assert actual == expected       

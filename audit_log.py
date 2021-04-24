@@ -119,6 +119,8 @@ class AuditLog:
     def main(self, args, str_to_search_for):
         try:
             lectures = self.read_file(args.path, str_to_search_for)
+            if lectures is None:
+                raise Exception("lectures is empty.") 
             data = do.DataOperations(lectures)
             if args.abs is True:
                 if self.get_abs_freq(data) is None:
