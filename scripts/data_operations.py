@@ -19,7 +19,8 @@ class DataOperations:
         try:
             dataset = set(self.data)
             abs_freq = {val:self.data.count(val) for val in dataset}
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception accurred while calculating absolute frequency.")
         return abs_freq
 
@@ -32,7 +33,8 @@ class DataOperations:
         try:
             abs_sorted_tuples = sorted(abs_dict.items(), key=operator.itemgetter(1))
             sorted_tuples = {k: v for k, v in abs_sorted_tuples}
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception accurred while sorting absolute frequency dictionary.")
         return sorted_tuples
 
@@ -51,7 +53,8 @@ class DataOperations:
             abs_freq_dict = self.sort_abs_freq_dict(abs_data)
             if abs_freq_dict is None:
                 raise Exception("abs_freq_dict is empty.")
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An excception accurred in abs_freq()")
         return abs_freq_dict
 
@@ -66,7 +69,8 @@ class DataOperations:
         try:
             for key, value in abs_freq_dict.items():
                 max_value += value
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred while getting max value.")
         return max_value
 
@@ -80,7 +84,8 @@ class DataOperations:
         rel_freq = 0
         try:
             rel_freq = (value/max_value)*PERSENTAGE
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred while calculating relative frequency.")
         return rel_freq
 
@@ -94,7 +99,8 @@ class DataOperations:
         mode = []
         try:
             mode = [key for key in abs_freq_dict.keys() if abs_freq_dict[key] == max(abs_freq_dict.values())]
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred while finding mode.")
         return mode
 
@@ -108,7 +114,8 @@ class DataOperations:
         scope = 0
         try: 
             scope = max[1] - min[1]
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred while calculating scope.")
         return scope
 
@@ -128,7 +135,8 @@ class DataOperations:
             max_val = self.get_max_value(abs_freq_dict)
             if max_val is None or max_val < 0:
                 raise Exception("max_val is not correct.")
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred in absolute_frequency().")
         return (max_val, abs_freq_dict)
 
@@ -151,7 +159,8 @@ class DataOperations:
                 rel_freq_dict[key] = self.calc_rel_freq(value, max_value)
             if rel_freq_dict is None:
                 raise Exception("rel_freq_dict is empty.")    
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred in relative_frequency().")
         return (PERSENTAGE, rel_freq_dict)
 
@@ -170,7 +179,8 @@ class DataOperations:
             mode_value = self.find_mode(abs_freq_dict)
             if mode_value is None:
                 raise Exception("mode value is not correct.")
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred in mode().")
         return mode_value
 
@@ -189,6 +199,7 @@ class DataOperations:
             scope_value = self.calc_scope(list(abs_freq_dict.items())[0], list(abs_freq_dict.items())[-1])
             if scope_value is None or scope_value < 0:
                 raise Exception("scope value is not correct.")
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred in scope().")
         return scope_value

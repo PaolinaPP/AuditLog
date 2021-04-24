@@ -20,7 +20,8 @@ class FileOperations:
             sheet = workbook.active
         except InvalidFileException:
             print("Invalid file.")    
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred while loading file.")
         return sheet
 
@@ -37,7 +38,8 @@ class FileOperations:
             for i in range(2, sheet.max_row, 1): #from 2 because data starts from row 2
                 if str_to_search_for in sheet.cell(row=i, column=2).value:
                     lectures.append(sheet.cell(row=i, column=2).value)
-        except Exception:
+        except Exception as ex:
+            print(ex)
             print("An exception occurred while reading data.")
         return lectures   
         
