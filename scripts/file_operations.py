@@ -42,7 +42,4 @@ class FileOperations:
             print(ex)
             print("An exception occurred while reading data.")
         return lectures   
-        
-    
-
-    
+  

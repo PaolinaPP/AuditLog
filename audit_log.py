@@ -115,7 +115,6 @@ class AuditLog:
     #    function description: main function which     #
     #        calls all funcs                           #
     ####################################################
-    #File: Лекция 1: Въведение в програмиране за семантичен уеб
     def main(self, args, str_to_search_for):
         try:
             lectures = self.read_file(args.path, str_to_search_for)
